@@ -1,0 +1,11 @@
+{
+    "name": "babel-loader-lerna-cra",
+    "version": "0.1.0",
+    "main": "override.js",
+    "bin": "bootstrap.js",
+    "dependencies": {
+        "find-up": "^3.0.0",
+        "fs-extra": "^7.0.0",
+        "glob": "^7.1.3"
+    }
+}
