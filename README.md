@@ -1,4 +1,4 @@
-# Babel-Loader-Lerna-CRA
+# babel-loader-lerna-cra
 
 > Transpile Create-React-App imports in Lerna projects.
 
