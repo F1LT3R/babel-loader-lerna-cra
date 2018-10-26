@@ -1,6 +1,17 @@
 {
     "name": "babel-loader-lerna-cra",
-    "version": "0.1.1",
+    "version": "0.1.2",
+    "description": "Transpile Create-React-App imports in Lerna projects.",
+    "keywords": [
+        "create-reaact-app",
+        "babel-loader",
+        "lerna",
+        "webpack",
+        "import",
+        "cra",
+        "transpile",
+        "babel"
+    ],
     "main": "override.js",
     "bin": "bootstrap.js",
     "dependencies": {
