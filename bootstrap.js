@@ -42,7 +42,7 @@ const linkOverride = (reactAppDir, type) => {
         fs.copySync(configFile, configBackup, {overwrite: false});
     }
 
-    log(`copying: ${prettyAppPath(configFile)}/... ${prettyFile(configFile)} => ${prettyFile(webpackReplacementPath)}`);
+    log(`copying: ${prettyAppPath(configFile)}/... ${prettyFile(webpackReplacementPath)} => ${prettyFile(configFile)}`);
 
     if (fs.existsSync(configFile)) {
         try {
@@ -54,6 +54,8 @@ const linkOverride = (reactAppDir, type) => {
     } else {
         fs.copySync(webpackReplacementPath, configFile, {overwrite: true});
     }
+
+    console.log();
 }
 
 config.apps.forEach(reactAppDir => {

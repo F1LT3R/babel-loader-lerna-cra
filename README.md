@@ -10,7 +10,7 @@ As with packages like [React-App-Rewired]...
 
 Using `babel-loader-lerna-cra` breaks the "guarantees" that Create React App provides. That is to say, you now "own" the configs. No support will be provided. Proceed with caution.
 
-**"Stuff can break**" — Dan Abramov twitter.com/dan_abramov/status/1045809734069170176
+**"Stuff can break**" — Dan Abramov https://twitter.com/dan_abramov/status/1045809734069170176
 
 ## The Problem
 
@@ -52,14 +52,11 @@ SyntaxError: .../monorepo-react/packages/comp-button/src/index.js: Unexpected to
   7 |       </button>
 ```
 
-These errors show up because the Webpack config in your Create-React-App/React-Scripts module doe not look outside the React App's `./src` directory for additional import dirs. In fact, how could it? It has no idea how you would configure your monorepo.
+These errors show up because the Webpack config in your Create-React-App does not look outside the React App's `./src` directory for additional import dirs. In fact, how could it? It has no idea how you would configure your monorepo.
 
 ## The Solution
 
-This Node module `babel-loader-lerna-cra` allows you to configure Webpack config overrides in your Lerna project's `package.json` file; allowing babel to transpile imports from dev and prod packages in your Lerna project.
-
-
-All you have to do is create your app using create-react-app and then rewire it.
+This module (`babel-loader-lerna-cra`) allows you to configure Webpack config overrides in your Lerna project's `package.json` file; allowing babel to transpile imported Lerna packages using `dev` and `prod`.
 
 ## Usage
 
@@ -116,10 +113,14 @@ All you have to do is create your app using create-react-app and then rewire it.
         '../packages/comp-b/src'
         ]
     }
-    babel-lerna-loader-cra: copying: my-react-app-1/... webpack.config.dev.js => webpack.config.replacement.js
-    babel-lerna-loader-cra: copying: my-react-app-1/... webpack.config.prod.js => webpack.config.replacement.js
-    babel-lerna-loader-cra: copying: my-react-app-2/... webpack.config.dev.js => webpack.config.replacement.js
-    babel-lerna-loader-cra: copying: my-react-app-2/... webpack.config.prod.js => webpack.config.replacement.js
+    babel-lerna-loader-cra: copying: my-react-app-1/... webpack.config.dev.js => backup.webpack.config.prod.js
+    babel-lerna-loader-cra: copying: my-react-app-1/... webpack.config.replacement.js => webpack.config.dev.js
+    babel-lerna-loader-cra: copying: my-react-app-1/... webpack.config.prod.js => backup.webpack.config.prod.js
+    babel-lerna-loader-cra: copying: my-react-app-1/... webpack.config.replacement.js => webpack.config.prod.js
+    babel-lerna-loader-cra: copying: my-react-app-2/... webpack.config.dev.js => backup.webpack.config.prod.js
+    babel-lerna-loader-cra: copying: my-react-app-2/... webpack.config.replacement.js => webpack.config.dev.js
+    babel-lerna-loader-cra: copying: my-react-app-2/... webpack.config.prod.js => backup.webpack.config.prod.js
+    babel-lerna-loader-cra: copying: my-react-app-2/... webpack.config.replacement.js => webpack.config.prod.js
     ```
 
     Note: you will need to bootstrap again when: 
