@@ -46,14 +46,13 @@ const linkOverride = (reactAppDir, type) => {
 
     if (fs.existsSync(configFile)) {
         try {
-            log('file already exists, removing....')
             fs.removeSync(configFile);
         } catch (error) {
             throw new Error('The symlink could not be removed!');
         }
-    } else {
-        fs.copySync(webpackReplacementPath, configFile, {overwrite: true});
     }
+
+    fs.copySync(webpackReplacementPath, configFile, {overwrite: true});
 
     console.log();
 }
